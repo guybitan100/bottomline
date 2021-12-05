@@ -2,10 +2,8 @@ package com.bottomline.infra.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 /*
@@ -33,22 +31,21 @@ public class HomePage extends PomBase {
         String pattern = "^\\d-\\d+\\s+of\\s+(\\d+)\\s+results";
         String results = driver.findElement(By.xpath(getProperty("search.results.xpath"))).getText();
         Pattern r = Pattern.compile(pattern);
-        Matcher m = r.matcher(results);
-        if (m.find()) {
-            return Integer.parseInt(m.group(1));
+        Matcher matcher = r.matcher(results);
+        if (matcher.find()) {
+            return Integer.parseInt(matcher.group(1));
         }
         return 0;
     }
 
     public void getAllResults() {
-
-        List<WebElement> list = driver.findElements(By.xpath(getProperty("search.results.all.xpath")));
-
-        for (WebElement we: list)
-        {
-            System.out.println(we.findElement(By.xpath("//*s[@class='a-size-medium a-color-base a-text-normal']")).getText());
+        String pattern = "^(HARRY POTTER.*)[,|:|-]";
+        String results = (driver.findElement(By.xpath(getProperty("search.results.all.xpath"))).getText());
+        Pattern r = Pattern.compile(pattern, Pattern.MULTILINE | Pattern.CASE_INSENSITIVE);
+        Matcher matcher = r.matcher(results);
+        while (matcher.find()) {
+            System.out.println(matcher.group(1));
         }
-
+        System.out.println(results);
     }
-
 }

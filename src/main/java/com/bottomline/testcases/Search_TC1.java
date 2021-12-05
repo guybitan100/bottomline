@@ -19,11 +19,11 @@ public class Search_TC1 {
 
         home.search("Harry Potter and the Order of the Phoenix");
         System.out.println(home.getResultsNum());
-        Thread.sleep(2000);
+        Thread.sleep(100);
         home.setFilter("Books");
         System.out.println(home.getResultsNum());
         home.getAllResults();
-        Thread.sleep(3000);
+        Thread.sleep(100);
         driver.quit();
     }
 
