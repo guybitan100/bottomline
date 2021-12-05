@@ -22,7 +22,8 @@ public class Search_TC1 {
         Thread.sleep(2000);
         home.setFilter("Books");
         System.out.println(home.getResultsNum());
-        Thread.sleep(7000);
+        home.getAllResults();
+        Thread.sleep(3000);
         driver.quit();
     }
 
