@@ -21,7 +21,7 @@ public class HomePage extends PomBase {
         driver.findElement(By.id(getProperty("search.submit.id"))).click();
     }
 
-    public void setFilter(String filter){
+    public void setFilter(String filter) {
         new Select(driver.findElement(By.id(getProperty("search.filter.id")))).selectByVisibleText(filter);
         driver.findElement(By.id(getProperty("search.submit.id"))).click();
         driver.findElement(By.xpath(getProperty("search.filter.english.xpath"))).click();

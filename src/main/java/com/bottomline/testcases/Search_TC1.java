@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 
-public class Login_TC1 {
+public class Search_TC1 {
 
 
     public static void main(String[] args) throws InterruptedException {
@@ -15,7 +15,6 @@ public class Login_TC1 {
         driver.get("https:/amazon.com");
 
         HomePage home = new HomePage(driver);
-
 
 
         home.search("Harry Potter and the Order of the Phoenix");

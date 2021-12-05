@@ -1,6 +1,5 @@
 package com.bottomline.infra.pages;
 
-import com.bottomline.testcases.Login_TC1;
 import org.openqa.selenium.WebDriver;
 
 import java.io.File;
