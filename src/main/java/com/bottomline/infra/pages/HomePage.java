@@ -6,11 +6,10 @@ import org.openqa.selenium.support.ui.Select;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-/*
 
- */
 
 public class HomePage extends PomBase {
+
 
     public HomePage(WebDriver driver) {
         super(driver, "HomePage.properties");
@@ -38,14 +37,17 @@ public class HomePage extends PomBase {
         return 0;
     }
 
-    public void getAllResults() {
+    public String getMaxName() {
         String pattern = "^(HARRY POTTER.*)[,|:|-]";
         String results = (driver.findElement(By.xpath(getProperty("search.results.all.xpath"))).getText());
         Pattern r = Pattern.compile(pattern, Pattern.MULTILINE | Pattern.CASE_INSENSITIVE);
         Matcher matcher = r.matcher(results);
+        String maxName = "";
         while (matcher.find()) {
-            System.out.println(matcher.group(1));
+            if (matcher.group(1).length() > maxName.length()) {
+                maxName = matcher.group(1);
+            }
         }
-        System.out.println(results);
+        return maxName;
     }
 }

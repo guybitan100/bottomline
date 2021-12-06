@@ -1,10 +1,7 @@
 package com.bottomline.infra.pages;
-
 import org.openqa.selenium.WebDriver;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.*;
 import java.util.Properties;
 
 public abstract class PomBase {
@@ -19,13 +16,13 @@ public abstract class PomBase {
         this.propFile = loadProperties();
     }
 
+
     public Properties loadProperties() {
         Properties obj = new Properties();
-        String propFileNamePath = PomBase.class.getClassLoader().getResource(propFileName).getPath();
+        InputStream in = PomBase.class.getClassLoader().getResourceAsStream(propFileName);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(in));
         try {
-            File src = new File(propFileNamePath);
-            FileInputStream fileInputStream = new FileInputStream(src);
-            obj.load(fileInputStream);
+            obj.load(reader);
         } catch (IOException e) {
             System.out.println("Can't load " + propFileName);
         }
